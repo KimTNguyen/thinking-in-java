@@ -52,8 +52,17 @@ public class Exercise6 {
 class BerylliumSphere {
 	private static long counter;
 	private final long id = counter++;
+	private String name = "sphere";
 
 	public String toString() {
 		return "Sphere " + id;
+	}
+	
+	public void setName(String newName) {
+		name = newName;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }

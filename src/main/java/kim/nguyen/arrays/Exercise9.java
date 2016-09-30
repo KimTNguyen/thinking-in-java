@@ -10,7 +10,6 @@
 package kim.nguyen.arrays;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * The Exercise9 class demonstrates that it is not possible to create an array
