@@ -16,12 +16,14 @@ import java.util.Arrays;
 public class Exercise19 {
 
     public static void main(String[] args) {
-        int size = 3;
-        Number[] array1 = new Number[size];
-        Number[] array2 = new Number[size];
+        /* the size of the array */
+        final int SIZE = 3;
+
+        Number[] array1 = new Number[SIZE];
+        Number[] array2 = new Number[SIZE];
 
         /* Assigns values for array1 and array2 */
-        for (int index = 0; index < size; ++index) {
+        for (int index = 0; index < SIZE; ++index) {
             int value = (int) (Math.random() * 100);
             array1[index] = new Number(value);
             array2[index] = new Number(value);
@@ -29,13 +31,13 @@ public class Exercise19 {
 
         /* Prints values of the array1 on the screen */
         System.out.print("array1: ");
-        for (int index = 0; index < size; ++index) {
+        for (int index = 0; index < SIZE; ++index) {
             System.out.print(array1[index].getNumber() + " ");
         }
 
         /* Prints values of the array1 on the screen */
         System.out.print("\narray2: ");
-        for (int index = 0; index < size; ++index) {
+        for (int index = 0; index < SIZE; ++index) {
             System.out.print(array2[index].getNumber() + " ");
         }
 
@@ -69,7 +71,7 @@ class Number {
 
         return false;
     }
-    
+
     public String toString() {
         return String.valueOf(number);
     }

@@ -1,5 +1,5 @@
 /**
- * Create an array of Integer, fill it with random int values (using autoboxing), 
+ * Exercise23.java Create an array of Integer, fill it with random int values (using autoboxing), 
  * and sort it into reverse order using a Comparator.
  *
  * @version %I%, %G%
@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Exercise23 {
+
     public static void main(String[] args) {
         Integer[] arr = { 7, 4, 10, 3, 4, 20, 8 };
 

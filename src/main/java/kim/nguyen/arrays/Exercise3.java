@@ -20,6 +20,7 @@ import java.util.Random;
  * The Exercise3 class demonstrates how the two dimensional are initialized
  */
 public class Exercise3 {
+    
 	public static void main(String[] args) {
 		printValues(iniTwoDArray(5, 3, 10));
 	}

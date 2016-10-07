@@ -17,6 +17,11 @@ import java.util.*;
  *
  */
 public class Exercise6 {
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.deepToString(initTwoDArray(3, 5)));
+    }
+    
 	/**
 	 * Initializes the two dimensional array with different size for each
 	 * dimension
@@ -38,10 +43,6 @@ public class Exercise6 {
 		}
 
 		return twoDArray;
-	}
-
-	public static void main(String[] args) {
-		System.out.println(Arrays.deepToString(initTwoDArray(3, 5)));
 	}
 }
 
