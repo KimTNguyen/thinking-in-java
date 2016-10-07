@@ -11,6 +11,7 @@
 package kim.nguyen.arrays;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Exercise21 {
 	public static void main(String[] args) {
@@ -18,7 +19,7 @@ public class Exercise21 {
 		int size = 5;
 		
 		Person[] person = new Person[size];
-		String[] names = {"Doan", "Kim", "Doan", "Thy", "Kim"};
+		String[] names = {"doan", "kim", "doan", "Thy", "kim"};
 		int[] ages = {25, 18, 30, 32, 24};
 
 		/* Assigns values for the elements in the array */
@@ -27,6 +28,10 @@ public class Exercise21 {
 		}
 		
 		Arrays.sort(person);
+		
+		System.out.println(Arrays.toString(person));
+		
+		Arrays.sort(person, Collections.reverseOrder());
 		
 		System.out.println(Arrays.toString(person));
 	}
