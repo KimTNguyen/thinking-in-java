@@ -65,6 +65,7 @@ public class YourFace {
 
         // Assigns members and fans for bands
         b1.addFans(seven);
+        b1.addFans(seven);
         b1.addFans(six);
         b1.addFans(five);
         b1.addFans(four);

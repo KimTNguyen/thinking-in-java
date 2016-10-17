@@ -12,6 +12,8 @@ import java.util.Arrays;
 
 public class Utils {
 
+    // TODO: Method description [increases the number of element count in the array] 
+    // is not matched with method execution [it doesn't have a LOC of increasing the number...]
     /**
      * Adds new element to the array, and increases the number of element count
      * in the array.
@@ -38,6 +40,7 @@ public class Utils {
      * @return the array with the new size
      */
     public static <T> T[] resizeArray(T[] array) {
+        // TODO: because of its simplicity, you can save your code length by writting these LOCs inline
         int amount = 1;
         T[] tmp = Arrays.copyOf(array, array.length + amount);
         return tmp;

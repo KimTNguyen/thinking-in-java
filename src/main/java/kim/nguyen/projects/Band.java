@@ -22,9 +22,12 @@ public class Band implements SocialEntity {
     private String description;
     private String location;
 
+    // TODO: this field is redundant because you can get it from [fans.length]
+    // and this field is not mentioned by G requirement
     /* The current number of fans who follow the band */
     private int numFans = 0;
 
+    // TODO: Similar to the above issue
     /* The current number of members who join the band */
     private int numMembers = 0;
 
@@ -34,10 +37,15 @@ public class Band implements SocialEntity {
         this.name = name;
         this.description = description;
         this.location = location;
+        // TODO: because the value of [numMembers] is always 0 in constructor
+        // so you can consider to initialize this field inline at its declaration statement, as below:
+        // private Person[] fans = {};
+        // then you can remove these LOCs
         members = new Person[numMembers];
         fans = new Person[numFans];
     }
 
+    // TODO: getID(): wrong of function name (can use Source > Generate Getters/Setters)
     public long getID() {
         return id;
     }
@@ -50,6 +58,8 @@ public class Band implements SocialEntity {
         this.name = name;
     }
 
+    // TODO: Method description [Returns the current number of people who follow the band] 
+    // is not matched with method execution [return an array]
     /**
      * Returns the current number of people who follow the band
      * 
