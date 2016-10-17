@@ -19,6 +19,7 @@ public class Group implements SocialEntity {
     private String name;
     private Person[] members;
 
+    // TODO: Similar to the issue in [Band] class
     /* The current number of members that the group has */
     private int numMembers = 0;
 
@@ -29,6 +30,7 @@ public class Group implements SocialEntity {
         countGroup++;
     }
 
+    // TODO: getID(): wrong of function name (can use Source > Generate Getters/Setters)
     public long getID() {
         return id;
     }

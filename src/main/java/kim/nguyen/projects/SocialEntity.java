@@ -11,7 +11,10 @@ package kim.nguyen.projects;
 
 import java.util.Comparator;
 
-public interface SocialEntity {    
+public interface SocialEntity {
+    // TODO: Fix the following bugs
+    // 1/ getID(): wrong of function name
+    // 2/ the [public] keyword is unnecessary  
     public long getID();
     public String getName();
     public void setName(String name);

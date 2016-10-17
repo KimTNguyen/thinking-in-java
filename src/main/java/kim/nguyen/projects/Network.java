@@ -15,12 +15,13 @@ public class Network implements SocialEntity {
     /* Keeps tract of the number of network created */
     private static long countNetwork;
 
+    // TODO: Similar to the issue in [Band] class
     /* The current number of members joining the network */
     private int numMembers = 0;
 
     private long id = 0;
     private String name;
-    private Person[] members;
+    private Person[] members = {};
 
     Network(String name) {
         members = new Person[numMembers];
@@ -28,7 +29,8 @@ public class Network implements SocialEntity {
         id = countNetwork;
         countNetwork++;
     }
-
+    
+    // TODO: getID(): wrong of function name (can use Source > Generate Getters/Setters)
     public long getID() {
         return id;
     }
@@ -69,6 +71,7 @@ public class Network implements SocialEntity {
     }
     
     public String toString() {
+        // TODO: You can save your LOC by returning the result directly without temporary variable [result]
         String result = "[id:" + id + " name:" + name + " members:" + Arrays.toString(members) +"]";
         return result;
     }
