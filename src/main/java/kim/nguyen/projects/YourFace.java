@@ -94,7 +94,7 @@ public class YourFace {
      */
     private static void printPersonInfo(Person person) {
         System.out.println("======================================");
-        System.out.println("id: " + person.getID());
+        System.out.println("id: " + person.getId());
         System.out.println("name: " + person.getName());
         System.out.println("location: " + person.getLocation());
         System.out.println("acquaintance: " + Arrays.toString(person.getAcquaintances()));

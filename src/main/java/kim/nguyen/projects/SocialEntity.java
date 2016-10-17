@@ -12,16 +12,13 @@ package kim.nguyen.projects;
 import java.util.Comparator;
 
 public interface SocialEntity {
-    // TODO: Fix the following bugs
-    // 1/ getID(): wrong of function name
-    // 2/ the [public] keyword is unnecessary  
-    public long getID();
-    public String getName();
-    public void setName(String name);
+    long getId();
+    String getName();
+    void setName(String name);
 }
 
 class SocialEntityComparator implements Comparator<SocialEntity> {
     public int compare(SocialEntity o1, SocialEntity o2) {
-        return ((o1.getID() > o2.getID()) ? 1 : ((o1.getID() == o2.getID()) ? 0 : -1));
+        return ((o1.getId() > o2.getId()) ? 1 : ((o1.getId() == o2.getId()) ? 0 : -1));
     }
 }

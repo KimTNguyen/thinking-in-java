@@ -17,19 +17,10 @@ public class Band implements SocialEntity {
 
     private long id = 0;
     private String name;
-    private Person[] fans;
-    private Person[] members;
+    private Person[] fans = {};
+    private Person[] members = {};
     private String description;
     private String location;
-
-    // TODO: this field is redundant because you can get it from [fans.length]
-    // and this field is not mentioned by G requirement
-    /* The current number of fans who follow the band */
-    private int numFans = 0;
-
-    // TODO: Similar to the above issue
-    /* The current number of members who join the band */
-    private int numMembers = 0;
 
     Band(String name, String description, String location) {
         id = countBand;
@@ -37,16 +28,9 @@ public class Band implements SocialEntity {
         this.name = name;
         this.description = description;
         this.location = location;
-        // TODO: because the value of [numMembers] is always 0 in constructor
-        // so you can consider to initialize this field inline at its declaration statement, as below:
-        // private Person[] fans = {};
-        // then you can remove these LOCs
-        members = new Person[numMembers];
-        fans = new Person[numFans];
     }
 
-    // TODO: getID(): wrong of function name (can use Source > Generate Getters/Setters)
-    public long getID() {
+    public long getId() {
         return id;
     }
 
@@ -58,15 +42,13 @@ public class Band implements SocialEntity {
         this.name = name;
     }
 
-    // TODO: Method description [Returns the current number of people who follow the band] 
-    // is not matched with method execution [return an array]
     /**
-     * Returns the current number of people who follow the band
+     * Returns the list of people who currently follow the band
      * 
      * @return the array of fan members
      */
     public Person[] getFans() {
-        return Arrays.copyOf(fans, numFans);
+        return Arrays.copyOf(fans, fans.length);
     }
 
     /**
@@ -80,8 +62,7 @@ public class Band implements SocialEntity {
         Arrays.sort(fans, comparator);
         if (Arrays.binarySearch(fans, fan, comparator) != 0) {
             fans = Utils.resizeArray(fans);
-            fans = Utils.addElement(fans, fan, numFans);
-            numFans++;
+            fans = Utils.addElement(fans, fan);
         }
 
     }
@@ -97,8 +78,7 @@ public class Band implements SocialEntity {
         Arrays.sort(members, comparator);
         if (Arrays.binarySearch(members, member, comparator) != 0) {
             members = Utils.resizeArray(members);
-            members = Utils.addElement(members, member, numMembers);
-            numMembers++;
+            members = Utils.addElement(members, member);
         }
     }
 
@@ -108,7 +88,7 @@ public class Band implements SocialEntity {
      * @return the array of member list
      */
     public Person[] getMembers() {
-        return Arrays.copyOf(members, numMembers);
+        return Arrays.copyOf(members, members.length);
     }
 
     public String getDescription() {

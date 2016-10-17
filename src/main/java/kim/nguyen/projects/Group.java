@@ -17,21 +17,15 @@ public class Group implements SocialEntity {
 
     private long id;
     private String name;
-    private Person[] members;
-
-    // TODO: Similar to the issue in [Band] class
-    /* The current number of members that the group has */
-    private int numMembers = 0;
+    private Person[] members = {};
 
     Group(String name) {
-        members = new Person[numMembers];
         this.name = name;
         id = countGroup;
         countGroup++;
     }
 
-    // TODO: getID(): wrong of function name (can use Source > Generate Getters/Setters)
-    public long getID() {
+    public long getId() {
         return id;
     }
 
@@ -55,8 +49,7 @@ public class Group implements SocialEntity {
         Arrays.sort(members, comparator);
         if (Arrays.binarySearch(members, person, comparator) != 0) {
             members = Utils.resizeArray(members);
-            members = Utils.addElement(members, person, numMembers);
-            numMembers++;
+            members = Utils.addElement(members, person);
         }
     }
 
@@ -66,6 +59,6 @@ public class Group implements SocialEntity {
      * @return an array of the members
      */
     public Person[] getMembers() {
-        return Arrays.copyOf(members, numMembers);
+        return Arrays.copyOf(members, members.length);
     }
 }
