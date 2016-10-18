@@ -6,40 +6,28 @@
  * @author Kim Nguyen
  */
 
-package kim.nguyen.projects;
+package kim.nguyen.projects.model;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
-public class Band implements SocialEntity {
+import kim.nguyen.projects.util.ArrayUtils;
+
+public class Band extends AbstractGroup<SocialEntity> {
 
     /* Keeps tract of the number of bands created */
     private static long countBand;
 
-    private long id = 0;
-    private String name;
     private Person[] fans = {};
-    private Person[] members = {};
     private String description;
     private String location;
 
-    Band(String name, String description, String location) {
-        id = countBand;
-        countBand++;
-        this.name = name;
+    public Band(String name, String description, String location) {
+        this.setId(countBand++);
+        this.setName(name);
+        this.setMembers(new Band[1]);
         this.description = description;
         this.location = location;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -58,26 +46,12 @@ public class Band implements SocialEntity {
      *            the new fan
      */
     public void addFans(Person fan) {
-        fans = Utils.addElement(fans, fan, comparator);
-    }
-
-    /**
-     * Adds the new member only if the member is not yet in the list of members
-     * 
-     * @param member
-     *            the new member
-     */
-    public void addMember(Person member) {
-        members = Utils.addElement(members, member, comparator);
-    }
-
-    /**
-     * Returns the number of members who are currently in the members list
-     * 
-     * @return the array of member list
-     */
-    public Person[] getMembers() {
-        return Arrays.copyOf(members, members.length);
+        fans = ArrayUtils.addElement(fans, fan, new Comparator<Person>() {
+            //TODO: duplicate comparator code ;(
+            public int compare(Person o1, Person o2) {
+                return ((o1.getId() > o2.getId()) ? 1 : ((o1.getId() == o2.getId()) ? 0 : -1));
+            }
+        });
     }
 
     public String getDescription() {

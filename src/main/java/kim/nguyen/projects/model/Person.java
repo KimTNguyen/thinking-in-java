@@ -6,17 +6,18 @@
  * @author Kim Nguyen
  */
 
-package kim.nguyen.projects;
+package kim.nguyen.projects.model;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
-public class Person implements SocialEntity {
+import kim.nguyen.projects.util.ArrayUtils;
+
+public class Person extends AbstractGroup<SocialEntity> {
 
     /* Keeps tract of the number of people created */
     private static long countPerson;
 
-    private long id;
-    private String name;
     private String location;
 
     /* A list of friends or people that the person follows */
@@ -25,23 +26,10 @@ public class Person implements SocialEntity {
     /* A list of networks that the person joins */
     private Network[] networks = {};
 
-    Person(String name, String location) {
-        this.name = name;
+    public Person(String name, String location) {
+        this.setId(countPerson++);
+        this.setName(name);
         this.location = location;
-        id = countPerson;
-        countPerson++;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getLocation() {
@@ -69,7 +57,12 @@ public class Person implements SocialEntity {
          */
         if (!this.equals(person)) {
             int numAcquaintances = acquaintances.length;
-            acquaintances = Utils.addElement(acquaintances, person, comparator);
+            acquaintances = ArrayUtils.addElement(acquaintances, person, new Comparator<Person>() {
+                // TODO: duplicate comparator code ;(
+                public int compare(Person o1, Person o2) {
+                    return ((o1.getId() > o2.getId()) ? 1 : ((o1.getId() == o2.getId()) ? 0 : -1));
+                }
+            });
 
             /*
              * If the new person is added to the list of acquaintances, then the
@@ -93,8 +86,13 @@ public class Person implements SocialEntity {
      */
     public void addNetwork(Network network) {
         int numNetworks = networks.length;
-        networks = Utils.addElement(networks, network, comparator);
-        
+        networks = ArrayUtils.addElement(networks, network, new Comparator<Network>() {
+            // TODO: duplicate comparator code ;(
+            public int compare(Network o1, Network o2) {
+                return ((o1.getId() > o2.getId()) ? 1 : ((o1.getId() == o2.getId()) ? 0 : -1));
+            }
+        });
+
         /*
          * If the person joins the network, the network should also update its
          * members list.
@@ -124,7 +122,8 @@ public class Person implements SocialEntity {
         return Arrays.copyOf(acquaintances, acquaintances.length);
     }
 
+    @Override
     public String toString() {
-        return ("[id:" + id + " name:" + name + " location:" + location + "]");
+        return ("[id:" + this.getId() + " name:" + this.getName() + " location:" + location + "]");
     }
 }

@@ -6,12 +6,12 @@
  * @author Kim Nguyen
  */
 
-package kim.nguyen.projects;
+package kim.nguyen.projects.util;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Utils {
+public class ArrayUtils {
 
     /**
      * Adds new element to the end of the array
@@ -27,7 +27,7 @@ public class Utils {
         Arrays.sort(tmp, comp);
         int result = Arrays.binarySearch(tmp, element, comp);
         if (result < 0) {
-            tmp = Utils.resizeArray(tmp);
+            tmp = ArrayUtils.resizeArray(tmp);
             tmp[tmp.length - 1] = element;
         }
         return tmp;
