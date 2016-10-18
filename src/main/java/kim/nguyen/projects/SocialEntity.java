@@ -12,6 +12,7 @@ package kim.nguyen.projects;
 import java.util.Comparator;
 
 public interface SocialEntity {
+    SocialEntityComparator comparator = new SocialEntityComparator();
     long getId();
     String getName();
     void setName(String name);

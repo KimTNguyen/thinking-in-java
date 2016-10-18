@@ -68,13 +68,16 @@ public class Person implements SocialEntity {
          * themselves
          */
         if (!this.equals(person)) {
-            SocialEntityComparator comparator = new SocialEntityComparator();
-            Arrays.sort(acquaintances, comparator);
-            if (Arrays.binarySearch(acquaintances, person, comparator) < 0) {
-                acquaintances = Utils.resizeArray(acquaintances);
-                acquaintances = Utils.addElement(acquaintances, person);
+            int numAcquaintances = acquaintances.length;
+            acquaintances = Utils.addElement(acquaintances, person, comparator);
 
-                // Update the acquaintances list of another person
+            /*
+             * If the new person is added to the list of acquaintances, then the
+             * person should also update their acquaintances list.
+             */
+            if (numAcquaintances < acquaintances.length) {
+
+                /* Update the acquaintances list of another person */
                 person.addAcquaintance(this);
             }
         }
@@ -89,13 +92,16 @@ public class Person implements SocialEntity {
      *            the new network that the person wants to join
      */
     public void addNetwork(Network network) {
-        SocialEntityComparator comparator = new SocialEntityComparator();
-        Arrays.sort(networks, comparator);
-        if (Arrays.binarySearch(networks, network, comparator) < 0) {
-            networks = Utils.resizeArray(networks);
-            networks = Utils.addElement(networks, network);
+        int numNetworks = networks.length;
+        networks = Utils.addElement(networks, network, comparator);
+        
+        /*
+         * If the person joins the network, the network should also update its
+         * members list.
+         */
+        if (numNetworks < networks.length) {
 
-            // Updates the members of the network
+            /* Updates the members of the network */
             network.addMember(this);
         }
     }

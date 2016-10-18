@@ -9,6 +9,7 @@
 package kim.nguyen.projects;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Utils {
 
@@ -21,9 +22,14 @@ public class Utils {
      *            the element will be added to the array
      * @return the array with new element
      */
-    public static <T> T[] addElement(T[] array, T element) {
+    public static <T> T[] addElement(T[] array, T element, Comparator<? super T> comp) {
         T[] tmp = array;
-        tmp[array.length - 1] = element;
+        Arrays.sort(tmp, comp);
+        int result = Arrays.binarySearch(tmp, element, comp);
+        if (result < 0) {
+            tmp = Utils.resizeArray(tmp);
+            tmp[tmp.length - 1] = element;
+        }
         return tmp;
     }
 

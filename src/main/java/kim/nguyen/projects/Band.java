@@ -58,13 +58,7 @@ public class Band implements SocialEntity {
      *            the new fan
      */
     public void addFans(Person fan) {
-        SocialEntityComparator comparator = new SocialEntityComparator();
-        Arrays.sort(fans, comparator);
-        if (Arrays.binarySearch(fans, fan, comparator) != 0) {
-            fans = Utils.resizeArray(fans);
-            fans = Utils.addElement(fans, fan);
-        }
-
+        fans = Utils.addElement(fans, fan, comparator);
     }
 
     /**
@@ -74,12 +68,7 @@ public class Band implements SocialEntity {
      *            the new member
      */
     public void addMember(Person member) {
-        SocialEntityComparator comparator = new SocialEntityComparator();
-        Arrays.sort(members, comparator);
-        if (Arrays.binarySearch(members, member, comparator) != 0) {
-            members = Utils.resizeArray(members);
-            members = Utils.addElement(members, member);
-        }
+        members = Utils.addElement(members, member, comparator);
     }
 
     /**
