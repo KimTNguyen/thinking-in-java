@@ -6,17 +6,15 @@
  * @author Kim Nguyen
  */
 
-package kim.nguyen.projects;
+package kim.nguyen.projects.model;
 
-import java.util.Arrays;
+import kim.nguyen.projects.util.Utils;
 
-public class Person implements SocialEntity {
+public class Person extends SocialEntity {
 
     /* Keeps tract of the number of people created */
     private static long countPerson;
 
-    private long id;
-    private String name;
     private String location;
 
     /* A list of friends or people that the person follows */
@@ -25,23 +23,11 @@ public class Person implements SocialEntity {
     /* A list of networks that the person joins */
     private Network[] networks = {};
 
-    Person(String name, String location) {
-        this.name = name;
+    public Person(String name, String location) {
+        setName(name);
         this.location = location;
-        id = countPerson;
+        setId(countPerson);
         countPerson++;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getLocation() {
@@ -69,7 +55,7 @@ public class Person implements SocialEntity {
          */
         if (!this.equals(person)) {
             int numAcquaintances = acquaintances.length;
-            acquaintances = Utils.addElement(acquaintances, person, comparator);
+            acquaintances = Utils.addElement(acquaintances, person, new SocialEntityComparator());
 
             /*
              * If the new person is added to the list of acquaintances, then the
@@ -93,8 +79,8 @@ public class Person implements SocialEntity {
      */
     public void addNetwork(Network network) {
         int numNetworks = networks.length;
-        networks = Utils.addElement(networks, network, comparator);
-        
+        networks = Utils.addElement(networks, network, new SocialEntityComparator());
+
         /*
          * If the person joins the network, the network should also update its
          * members list.
@@ -112,7 +98,7 @@ public class Person implements SocialEntity {
      * @return the array of the networks
      */
     public Network[] getNetworks() {
-        return Arrays.copyOf(networks, networks.length);
+        return networks;
     }
 
     /**
@@ -121,10 +107,12 @@ public class Person implements SocialEntity {
      * @return the array of the acquaintances
      */
     public Person[] getAcquaintances() {
-        return Arrays.copyOf(acquaintances, acquaintances.length);
+        return acquaintances;
     }
 
+    @Override
     public String toString() {
-        return ("[id:" + id + " name:" + name + " location:" + location + "]");
+        return ("[id:" + getId() + " name:" + getName() + " location:" + location + " acquaintances:"
+                + acquaintances.length + " networks:" + networks.length + "]");
     }
 }

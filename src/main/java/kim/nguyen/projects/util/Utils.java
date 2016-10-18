@@ -6,7 +6,7 @@
  * @author Kim Nguyen
  */
 
-package kim.nguyen.projects;
+package kim.nguyen.projects.util;
 
 import java.util.Arrays;
 import java.util.Comparator;

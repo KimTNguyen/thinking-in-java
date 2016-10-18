@@ -6,35 +6,23 @@
  * @author Kim Nguyen
  */
 
-package kim.nguyen.projects;
+package kim.nguyen.projects.model;
 
 import java.util.Arrays;
 
-public class Group implements SocialEntity {
+import kim.nguyen.projects.util.Utils;
+
+public class Group extends SocialEntity {
 
     /* Keeps tract of the number of groups created */
     private static long countGroup;
 
-    private long id;
-    private String name;
     private Person[] members = {};
 
-    Group(String name) {
-        this.name = name;
-        id = countGroup;
+    public Group(String name) {
+        setName(name);
+        setId(countGroup);
         countGroup++;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -45,7 +33,7 @@ public class Group implements SocialEntity {
      *            the new member who is added to the group
      */
     public void addMember(Person person) {
-        members = Utils.addElement(members, person, comparator);
+        members = Utils.addElement(members, person, new SocialEntityComparator());
     }
 
     /**
@@ -54,6 +42,11 @@ public class Group implements SocialEntity {
      * @return an array of the members
      */
     public Person[] getMembers() {
-        return Arrays.copyOf(members, members.length);
+        return members;
+    }
+
+    @Override
+    public String toString() {
+        return ("[id:" + getId() + " name:" + getName() + " members:" + Arrays.toString(members) + "]");
     }
 }

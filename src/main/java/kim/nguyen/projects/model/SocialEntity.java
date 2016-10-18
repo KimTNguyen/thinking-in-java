@@ -7,15 +7,31 @@
  * @author Kim Nguyen
  */
 
-package kim.nguyen.projects;
+package kim.nguyen.projects.model;
 
 import java.util.Comparator;
 
-public interface SocialEntity {
-    SocialEntityComparator comparator = new SocialEntityComparator();
-    long getId();
-    String getName();
-    void setName(String name);
+public abstract class SocialEntity {
+    private long id;
+    private String name;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public abstract String toString();
 }
 
 class SocialEntityComparator implements Comparator<SocialEntity> {

@@ -6,11 +6,13 @@
  * @author Kim Nguyen
  */
 
-package kim.nguyen.projects;
+package kim.nguyen.projects.model;
 
 import java.util.Arrays;
 
-public class Band implements SocialEntity {
+import kim.nguyen.projects.util.Utils;
+
+public class Band extends SocialEntity {
 
     /* Keeps tract of the number of bands created */
     private static long countBand;
@@ -22,7 +24,7 @@ public class Band implements SocialEntity {
     private String description;
     private String location;
 
-    Band(String name, String description, String location) {
+    public Band(String name, String description, String location) {
         id = countBand;
         countBand++;
         this.name = name;
@@ -48,7 +50,7 @@ public class Band implements SocialEntity {
      * @return the array of fan members
      */
     public Person[] getFans() {
-        return Arrays.copyOf(fans, fans.length);
+        return fans;
     }
 
     /**
@@ -58,7 +60,7 @@ public class Band implements SocialEntity {
      *            the new fan
      */
     public void addFans(Person fan) {
-        fans = Utils.addElement(fans, fan, comparator);
+        fans = Utils.addElement(fans, fan, new SocialEntityComparator());
     }
 
     /**
@@ -68,7 +70,7 @@ public class Band implements SocialEntity {
      *            the new member
      */
     public void addMember(Person member) {
-        members = Utils.addElement(members, member, comparator);
+        members = Utils.addElement(members, member, new SocialEntityComparator());
     }
 
     /**
@@ -77,7 +79,7 @@ public class Band implements SocialEntity {
      * @return the array of member list
      */
     public Person[] getMembers() {
-        return Arrays.copyOf(members, members.length);
+        return members;
     }
 
     public String getDescription() {
@@ -94,5 +96,11 @@ public class Band implements SocialEntity {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return ("[id:" + getId() + " name:" + getName() + " members:" + Arrays.toString(members) + " fans:"
+                + fans.length + "]");
     }
 }

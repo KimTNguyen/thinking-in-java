@@ -1,6 +1,11 @@
-package kim.nguyen.projects;
+package kim.nguyen.projects.main;
 
 import java.util.Arrays;
+
+import kim.nguyen.projects.model.Band;
+import kim.nguyen.projects.model.Group;
+import kim.nguyen.projects.model.Network;
+import kim.nguyen.projects.model.Person;
 
 public class YourFace {
 
@@ -84,6 +89,8 @@ public class YourFace {
         printPersonInfo(five);
         printPersonInfo(six);
         printPersonInfo(seven);
+        
+        System.out.println(grp1.toString());
     }
 
     /**
