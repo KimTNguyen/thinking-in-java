@@ -17,31 +17,17 @@ public class Band extends SocialEntity {
     /* Keeps tract of the number of bands created */
     private static long countBand;
 
-    private long id = 0;
-    private String name;
     private Person[] fans = {};
     private Person[] members = {};
     private String description;
     private String location;
 
     public Band(String name, String description, String location) {
-        id = countBand;
-        countBand++;
-        this.name = name;
+        setId(countBand);
+        setName(name);
         this.description = description;
         this.location = location;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        countBand++;
     }
 
     /**
