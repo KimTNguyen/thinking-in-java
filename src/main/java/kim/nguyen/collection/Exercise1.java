@@ -38,4 +38,8 @@ class Gerbil {
 	public void hop() {
 		System.out.println("gerbil number " + gerbilNumber + " is hopping!");
 	}
+
+	public String toString() {
+		return Integer.toString(gerbilNumber);
+	}
 }

@@ -1,3 +1,13 @@
+/**
+ * Create a class, then make an initialized array of objects of your class.
+ * Fill a List from your array. Create a subset of your List by using subList( ), 
+ * then remove this subset from your List.
+ *
+ * @version %I%, %G%
+ *
+ * @author Kim Nguyen
+ */
+
 package kim.nguyen.collection;
 
 import java.util.ArrayList;
