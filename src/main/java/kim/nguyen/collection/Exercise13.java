@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 public class Exercise13 {
+	
 	public static void main(String[] args) {
 		final int startingIndex = 2;
 		LinkedList<Integer> list = new LinkedList<Integer>();
